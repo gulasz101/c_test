@@ -26,3 +26,8 @@ Route::post(
     '/products',
     [ProductsController::class, 'store']
 )->name('products.store');
+
+Route::get(
+    '/products/{productId}',
+    [ProductsController::class, 'show']
+)->name('products.show');
