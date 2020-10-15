@@ -27,7 +27,7 @@ class ProductsController extends Controller
         );
 
         return response(
-            (new ProductResource($product)),
+            new ProductResource($product),
             Response::HTTP_CREATED,
             ['Location' => route('products.show', $product->id)]
         );
