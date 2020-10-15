@@ -10,7 +10,7 @@ use App\Models\Product;
  * Class ProductsRepository
  * @package App\Repositories
  */
-class ProductsRepository
+class ProductsRepository extends Repository
 {
     /**
      * Persists new product model into db.
@@ -22,7 +22,7 @@ class ProductsRepository
         $product = new Product();
         $product->fill($data);
 
-        $product->save();
+        $this->persist($product);
 
         return $product;
     }
