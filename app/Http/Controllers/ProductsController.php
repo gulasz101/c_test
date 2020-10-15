@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProduct;
+use App\Repositories\ProductsRepository;
 
 /**
  * Class ProductsController
@@ -14,9 +15,12 @@ class ProductsController extends Controller
 {
     /**
      * @param StoreProduct $request
+     * @param ProductsRepository $repository
      */
-    public function store(StoreProduct $request)
+    public function store(StoreProduct $request, ProductsRepository $repository)
     {
-        $data = $request->validated();
+        $product = $repository->store(
+            $request->validated()
+        );
     }
 }
