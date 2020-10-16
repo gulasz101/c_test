@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Product;
+use App\Support\Validable\ValidableContract as Validable;
 
 /**
  * Class ProductsRepository
@@ -14,13 +15,15 @@ class ProductsRepository extends Repository
 {
     /**
      * Persists new product model into db.
-     * @param array $data
+     * @param Validable $validableInput
      * @return Product
      */
-    public function store(array $data): Product
+    public function store(Validable $validableInput): Product
     {
         $product = new Product();
-        $product->fill($data);
+        $product->fill(
+            $validableInput->getValidatedData()
+        );
 
         $this->persist($product);
 

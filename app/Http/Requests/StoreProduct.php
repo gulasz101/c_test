@@ -2,14 +2,18 @@
 
 namespace App\Http\Requests;
 
+use App\Support\Validable\FormRequestIsValidable;
+use App\Support\Validable\ValidableContract;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class StoreProduct
  * @package App\Http\Requests
  */
-class StoreProduct extends FormRequest
+class StoreProduct extends FormRequest implements ValidableContract
 {
+    use FormRequestIsValidable;
+
     /**
      * Determine if the user is authorized to make this request.
      *

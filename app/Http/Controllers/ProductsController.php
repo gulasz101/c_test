@@ -22,9 +22,7 @@ class ProductsController extends Controller
      */
     public function store(StoreProduct $request, ProductsRepository $repository)
     {
-        $product = $repository->store(
-            $request->validated()
-        );
+        $product = $repository->store($request);
 
         return response(
             new ProductResource($product),
